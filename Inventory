@@ -1,0 +1,105 @@
+using System;
+
+namespace GameProgrammingFinalProject
+{
+    internal class Inventory
+    {
+        string[] itemName = new string[5];
+
+        bool[] isInventorySlotFull = new bool[5];
+
+        public void InventoryStart()//Should do this in start
+        {
+
+            for (int i = 0; i < itemName.Length; i++)
+            {
+                itemName[i] = "empty";
+            }
+            for (int i = 0; i < isInventorySlotFull.Length; i++)
+            {
+                isInventorySlotFull[i] = false;
+            }
+        }
+
+        public void AddItem(string currentItemName)
+        {
+            for (int i = 0; i < isInventorySlotFull.Length; i++)
+            {
+                if (isInventorySlotFull[i] == false)
+                {
+                    isInventorySlotFull[i] = true;
+
+                    itemName[i] = currentItemName;
+                    Console.WriteLine("Here take this key and go away.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("New item added to inventory.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                }
+            }
+        }
+
+        public bool DoorCheck()
+        {
+            int keyCount = 0;
+            for (int i = 0; i < isInventorySlotFull.Length; i++)
+            {
+                if (isInventorySlotFull[i] != false)
+                {
+                    if (itemName[i] == "halfkeyofeden")
+                    {
+                        keyCount++;
+                    }
+                }
+            }
+            if (keyCount == 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public void CheckInventory()
+        {
+            Console.WriteLine("1- " + itemName[0]);
+            Console.WriteLine("2- " + itemName[1]);
+            Console.WriteLine("3- " + itemName[2]);
+            Console.WriteLine("4- " + itemName[3]);
+            Console.WriteLine("5- " + itemName[4]);
+            Console.WriteLine("6- Exit");
+
+            Console.WriteLine("Enter the number to learn more about the item.");
+            string answer = Console.ReadLine();
+            if (answer == "1" || answer == "2" || answer == "3" || answer == "4" || answer == "5")
+            {
+                int convertedAnswer = int.Parse(answer);
+                ItemExplanation(itemName[convertedAnswer - 1]);
+            }
+            else if (answer == "6")
+            {
+                Console.WriteLine("Exiting inventory.");
+            }
+            else
+            {
+                Console.WriteLine("Unknown slot request.");
+            }
+        }
+        public void ItemExplanation(string currentItemName)
+        {
+
+            if (currentItemName == "halfkeyofeden")
+            {
+
+                Console.WriteLine("Merge with the other half at the door to reach the Eden.");
+            }
+            else if (currentItemName == "empty")
+            {
+                Console.WriteLine("This slot is empty");
+            }
+        }
+    }
+}
