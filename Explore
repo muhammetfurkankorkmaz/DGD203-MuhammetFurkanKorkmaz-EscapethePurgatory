@@ -1,0 +1,80 @@
+using System;
+using System.Threading;
+
+namespace GameProgrammingFinalProject
+{
+    internal class Explore
+    {
+
+        public void ExploreAround(int currentXLocation, int currentYLocation)
+        {
+            if (currentXLocation == 1 && currentYLocation == 1)
+            {
+                Console.WriteLine("Purgatory");
+                Thread.Sleep(1000);
+                Console.WriteLine("Land of lost souls...");
+                Thread.Sleep(1000);
+                Console.WriteLine("There is no pain in here but there is no joy either.");
+                Thread.Sleep(1000);
+                Console.WriteLine("There is no dead here but there is no life either.");
+                Thread.Sleep(1000);
+                Console.WriteLine("There is nothing here but also everything is here.");
+                Thread.Sleep(1000);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("PURGATORY");
+                Console.WriteLine("The only souls here are those who think they believed");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (currentXLocation == 2 && currentYLocation == 1)
+            {
+                Console.WriteLine("Lost souls all over");
+                Thread.Sleep(1000);
+                Console.WriteLine("Wandering around, waiting, dissolving.");
+
+            }
+           
+            else if (currentXLocation == 1 && currentYLocation == 3)
+            {
+                Console.WriteLine("Breathtaking view of Eden");
+                Thread.Sleep(1000);
+                Console.WriteLine("Waterfalls of wines that isn't even made from grapes. ");
+                Console.WriteLine("Angels who serve the most devoted souls. ");
+                Console.WriteLine("Colors that are every shade of light but not white. ");
+                Thread.Sleep(1000);
+                Console.WriteLine("Realm of infinite happiness.");
+                Console.WriteLine("Isn't that every souls purpose?");
+            }
+            else if (currentXLocation == 4 && currentYLocation == 2)
+            {
+                //Npc , talks about purgatory
+            }
+
+            else if (currentXLocation == 4 && currentYLocation == 3)
+            {
+                //Hell wiev
+                Console.WriteLine("You can see the pain from here, in Hell.");
+                Thread.Sleep(1000);
+                Console.WriteLine("Screams so strong that will shatter your bones. ");
+                Console.WriteLine("Souls who are wishing for one more chance. ");
+                Console.WriteLine("Only color is here red and black, every tone of them. ");
+                Thread.Sleep(1000);
+                Console.WriteLine("Realm of infinite suffering.");
+                Console.WriteLine("Avoid this at all costs.");
+            }
+            else if (currentXLocation == 1 && currentYLocation == 4)
+            {
+                //npc,talks about key of eden
+            }
+
+            else if (currentXLocation == 4 && currentYLocation == 4)
+            {
+                //Door
+            }
+            else
+            {
+                Console.WriteLine("This area looks emptier and darker than my heart.");
+            }
+        }
+
+    }
+}
