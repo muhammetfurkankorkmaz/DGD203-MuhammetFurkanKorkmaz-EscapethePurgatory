@@ -1,0 +1,85 @@
+using System;
+
+using System.Threading;
+
+namespace GameProgrammingFinalProject
+{
+    internal class EventSystem
+    {
+        NPCs npcs = new NPCs();
+
+        public Inventory inventory;
+
+        bool isGameEnded = false;
+
+        bool isFirstHalfKeyGiven = false;
+        bool isSecondHalfKeyGiven = false;
+
+        public void EventChecker(int currentX, int currentY)
+        {
+            if (currentX == 1 && currentY == 4)
+            {
+                //Npc ,talks about key of eden
+                npcs.WiseNPC();
+                if (isFirstHalfKeyGiven == false)
+                {
+                    inventory.AddItem("halfkeyofeden");
+                    isFirstHalfKeyGiven = true;
+                }
+            }
+            else if (currentX == 4 && currentY == 2)
+            {
+                //Npc ,talks about purgatory
+                npcs.MadNPC();
+                if (isSecondHalfKeyGiven == false)
+                {
+                    inventory.AddItem("halfkeyofeden");
+                    isSecondHalfKeyGiven = true;
+                }
+            }
+
+            else if (currentX == 4 && currentY == 4)
+            {
+                Console.WriteLine("You encounter a door so huge that you cant see the end of it.");
+                Thread.Sleep(1000);
+                Console.WriteLine("There are no walls side of the door but something does not allow you to pass.");
+                Thread.Sleep(1000);
+                Console.WriteLine("Now lets see if you have the all parts of key of Eden.");
+                Thread.Sleep(1000);
+
+                if (inventory.DoorCheck() == true)
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Gate of the Eden opens to you.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("While opening you smell the dizzying smell of beauty.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("From now on there will be no suffering, there will be no pain.");
+                    isGameEnded = true;
+
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("You don't have the key to open the Eden.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Go back to where you belong you peasent..");
+                }
+
+            }
+        }
+
+        public bool IsGameEnded()
+        {
+            if (isGameEnded)
+            {
+                isGameEnded = false;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }//Class
+}//nameSpace
