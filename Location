@@ -1,0 +1,74 @@
+using System;
+
+namespace GameProgrammingFinalProject
+{
+    internal class Location
+    {
+        int currentXLocation = 1;
+        int currentYLocation = 1;
+
+        public int CurrentXLocation()
+        {
+            return currentXLocation;
+        }
+        public int CurrentYLocation()
+        {
+            return currentYLocation;
+        }
+
+        public void Move(string currentMovement)
+        {
+            //SHould limit the player between 0,0 and 4,4
+            if (currentMovement == "up")
+            {
+                if (currentYLocation != 4)
+                {
+                    currentYLocation++;
+                    Console.WriteLine("Moved Up");
+                }
+                else
+                {
+                    Console.WriteLine("You can't go off limits!");
+                }
+            }
+            else if (currentMovement == "down")
+            {
+                if (currentYLocation != 1)
+                {
+                    currentYLocation--;
+                    Console.WriteLine("Moved Down");
+                }
+                else
+                {
+                    Console.WriteLine("You can't go off limits!");
+                }
+            }
+            else if (currentMovement == "right")
+            {
+
+                if (currentXLocation != 4)
+                {
+                    currentXLocation++;
+                    Console.WriteLine("Moved Right");
+                }
+                else
+                {
+                    Console.WriteLine("You can't go off limits!");
+                }
+            }
+            else if (currentMovement == "left")
+            {
+                if (currentXLocation != 1)
+                {
+                    currentXLocation--;
+                    Console.WriteLine("Moved Left");
+                }
+                else
+                {
+                    Console.WriteLine("You can't go off limits!");
+                }
+            }
+        }
+
+    }
+}
