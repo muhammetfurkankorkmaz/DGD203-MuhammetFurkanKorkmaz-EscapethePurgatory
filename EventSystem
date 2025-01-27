@@ -74,6 +74,8 @@ namespace GameProgrammingFinalProject
             if (isGameEnded)
             {
                 isGameEnded = false;
+                isFirstHalfKeyGiven = false;
+                isSecondHalfKeyGiven = false;
                 return true;
             }
             else
