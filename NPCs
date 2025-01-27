@@ -1,0 +1,162 @@
+using System;
+using System.Threading;
+
+namespace GameProgrammingFinalProject
+{
+    internal class NPCs
+    {
+
+        public void WiseNPC()//Talks about how to escape purgatory
+        {
+            Console.WriteLine("When you enter this area you encountered a old man that has longer beard than the tree next to him.");
+            Thread.Sleep(1500);
+            Console.WriteLine("You look like you are lost young soul.");
+            bool isFirstQuestionAnswered = true;
+
+            while (isFirstQuestionAnswered)
+            {
+                Console.WriteLine("What brought you here?");
+                Thread.Sleep(1000);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Enter the number to answer it.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("1-my sins");
+                Console.WriteLine("2-my wish to be immortal");
+                Console.WriteLine("3-I came here to end this place.");
+
+                string firstAnswer = Console.ReadLine();
+                if (firstAnswer == "1")
+                {
+                    Console.WriteLine("If you were sinner you would be in hell, not here.");
+                    isFirstQuestionAnswered = false;
+                }
+                else if (firstAnswer == "2")
+                {
+                    Console.WriteLine("All you have here is time, but there is nothing to do.");
+                    isFirstQuestionAnswered = false;
+                }
+                else if (firstAnswer == "3")
+                {
+                    Console.WriteLine("This place was here before you and it will be here after you.");
+                    isFirstQuestionAnswered = false;
+                }
+                else
+                {
+                    Console.WriteLine("My old ears can not hear anymore. Come again?");
+                }
+            }
+            Thread.Sleep(1000);
+            bool isSecondQuestionAnswered = true;
+
+            while (isSecondQuestionAnswered)
+            {
+                Console.WriteLine("Now, what would you like to know?");
+                Thread.Sleep(1000);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("1-How to escape this place?");
+                Console.WriteLine("2-What is your story?");
+                Console.WriteLine("3-Have a good day.");
+                string secondAnswer = Console.ReadLine();
+                if (secondAnswer == "1")
+                {
+                    Console.WriteLine("You have to find Key of Eden to escape.");
+                    Console.WriteLine("There are two parts of this key.");
+                    Console.WriteLine("And I can give you only one half.");
+                }
+                else if (secondAnswer == "2")
+                {
+                    Console.WriteLine("Long time ago, I was a simple man. Or I thought I was.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("The thing is my soul was one but it had two pieces.");
+                    Console.WriteLine("One of them wanted to good other one wanted do bad stuff.");
+                    Console.WriteLine("And I satisfied them both.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("And for every good I had one bad so I fell here.");
+                }
+                else if (secondAnswer == "3")
+                {
+                    Console.WriteLine("It was nice seeing another lost soul.");
+                   
+                    isSecondQuestionAnswered = false;
+                }
+                else
+                {
+                    Console.WriteLine("My old ears can not hear anymore. Come again?");
+                }
+            }
+
+        }//Method
+
+        public void MadNPC()//Talks about purgatory
+        {
+            Console.WriteLine("When you enter this are you encountered a man that no longer looks like human.");
+            Thread.Sleep(1500);
+            Console.WriteLine("We are here just to suffer.");
+            bool isFirstQuestionAnswered = true;
+
+            while (isFirstQuestionAnswered)
+            {
+                Thread.Sleep(1000);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Enter the number to answer it.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("1-We are not suffering, hell is down there.");
+                Console.WriteLine("2-Suffering is all we got left.");
+
+                string firstAnswer = Console.ReadLine();
+                if (firstAnswer == "1")
+                {
+                    Console.WriteLine("I would rather be in hell rather than this endless void.");
+                    isFirstQuestionAnswered = false;
+                }
+                else if (firstAnswer == "2")
+                {
+                    Console.WriteLine("An endless suffer, never ends never ends never ends suffering never ends.");
+                    isFirstQuestionAnswered = false;
+                }      
+                else
+                {
+                    Console.WriteLine("My suffering blocks your voice. What did you say?");
+                }
+            }
+            Thread.Sleep(1000);
+            bool isSecondQuestionAnswered = true;
+
+            while (isSecondQuestionAnswered)
+            {
+                Console.WriteLine("Ask me a question to reduce my suffering.");
+                Thread.Sleep(1000);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("1-How to live in this place?");
+                Console.WriteLine("2-What is your story?");
+                Console.WriteLine("3-Have a good suffering.");
+                string secondAnswer = Console.ReadLine();
+                if (secondAnswer == "1")
+                {
+                    Console.WriteLine("Look at wievs, buy something from merchant and wander around.");
+                }
+                else if (secondAnswer == "2")
+                {
+                    Console.WriteLine("Long time ago, I was a  good man.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("But I treated the prophet wrong one time.");
+                    Console.WriteLine("And look where that got me.");
+                    Console.WriteLine("Just one mistake.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Some people do have some priviliges.");
+                }
+                else if (secondAnswer == "3")
+                {
+                    Console.WriteLine("Thanks, I will make sure I am.");
+                    
+                    isSecondQuestionAnswered = false;
+                }
+                else
+                {
+                    Console.WriteLine("My suffering blocks your voice. What did you say?");
+                }
+            }
+        }
+
+    }
+}
