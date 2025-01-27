@@ -1,0 +1,165 @@
+using System;
+using System.Threading;
+
+namespace GameProgrammingFinalProject
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Variables
+            bool isGameRunning = true;
+
+            Commands commands = new Commands();
+
+            EventSystem eventSystem = new EventSystem();
+
+            Inventory _inventory = new Inventory();
+
+            eventSystem.inventory = _inventory;
+            commands.inventory = _inventory;
+            #region TUTORIAL 
+            Console.WriteLine("Welcome to an unforgettable adventure!");
+            Thread.Sleep(600);
+            Console.WriteLine("Go ahead and share your name with us brave adventurer:");
+            string playerName = Console.ReadLine().ToLower();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("(Command skip if you want to skip the tutorial)");
+            Console.WriteLine("(If you want to enter the tutorial just press enter)");
+            Console.WriteLine("(Skip tutorial?)");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            string skipTutorial = Console.ReadLine().ToLower();
+
+            if (skipTutorial != "skip")
+            {
+                Console.WriteLine("It looks like you need some help before you enter this adventure!");
+                Console.WriteLine("If you want to escape this realm you have to find the Key of Eden.");
+                Thread.Sleep(2250);
+                Console.WriteLine("Explore, wander around and collect items.");
+                Console.WriteLine("To play enter valid commands while you are on menu.");
+                Thread.Sleep(2250);
+                Console.WriteLine();
+                Console.WriteLine("commands to reach all of the commands.");
+                Console.WriteLine("inventory to check your inventory.");
+                Console.WriteLine("explore to understand the surroundings of you.");
+                Console.WriteLine("lookat to learn your current location.");
+                Console.WriteLine("up-down-right-left to move in the map.");
+                Console.WriteLine("(Map is 4x4 grid)");
+                Thread.Sleep(2250);
+                Console.WriteLine();
+                Console.WriteLine("ARE YOU READY ADVENTURER???");
+                Thread.Sleep(2250);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("SORRY YOUR NAME WAS " + playerName);
+            }
+            else if (skipTutorial == "skip")
+            {
+                Console.WriteLine("You have been around here before huh?");
+                Thread.Sleep(600);
+                Console.WriteLine("Or you are just brave enough to enter this hazardous realm without a guide.");
+                Thread.Sleep(600);
+                Console.WriteLine("So be it.");
+                Thread.Sleep(600);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine();
+                Console.WriteLine("But I must say I am not gonna be your friend from now on.");
+                Console.WriteLine("HAHA GOT YOU!! Write \"commands\" to reach all of the commands.");
+                Thread.Sleep(1200);
+            }
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("Press enter to enter the game.");
+            Console.ReadLine();
+            Console.Clear();
+            #endregion
+
+            #region MAINMENU
+            {
+            Start:
+
+
+
+                bool isOnMainMenu = true;
+
+                while (isOnMainMenu)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("NEW GAME");
+                    Console.WriteLine("CREDITS");
+                    Console.WriteLine("EXIT");
+
+                    string mainMenuChoice = Console.ReadLine().ToLower();
+                    if (mainMenuChoice == "newgame" || mainMenuChoice == "new game")
+                    {
+                        isOnMainMenu = false;
+                    }
+                    else if (mainMenuChoice == "credits")
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Made by Muhammet Furkan Korkmaz 225040043");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("And from here I send my regards to dear player and Onur Hoca (Or whoever is giving the notes)");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("It is lovely day isn't it?");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("At least that's what I thought :)");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Credits screen were gonna be too short if I didn't wrote these because I am my source (and Onur Hoca)");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("And thanks to the google translate but I am assuming you understand that from this perfect english I wrote");
+                    }
+                    else if (mainMenuChoice == "exit")
+                    {
+                        Console.WriteLine("Exiting");
+                        Thread.Sleep(1200);
+                        isOnMainMenu = false;
+                        isGameRunning = false;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("UNKKNOWN COMMAND!!!!!!!!!!!!!!!!!!!!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("I am calm now but please enter a valid command.");
+                    }
+                }
+                #endregion
+                _inventory.InventoryStart();//Starts the inventory
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("ANOTHER HELPLES SOUL FINDS HIMSELF IN THE PURGATORY.");
+                Thread.Sleep(1000);
+                Console.WriteLine("You must decide your fate.");
+                Thread.Sleep(1000);
+                Console.WriteLine("Are you gonna shape your own destiny or will you let is slip out of your hands?");
+                Thread.Sleep(1000);
+
+                while (isGameRunning)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Please enter your command");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    //CommandChecker
+                    string currentCommand = Console.ReadLine().ToLower();
+                    commands.CommandInput(currentCommand);
+                    //after this needs event checker
+                    if (currentCommand == "up" || currentCommand == "down" || currentCommand == "right" || currentCommand == "left" || currentCommand == "explore")
+                    {
+                        eventSystem.EventChecker(commands.location.CurrentXLocation(), commands.location.CurrentYLocation());
+                    }
+                    if (eventSystem.IsGameEnded())
+
+                    {
+                        goto Start;
+                    }
+
+                }
+
+            }
+
+        }
+    }
+}
