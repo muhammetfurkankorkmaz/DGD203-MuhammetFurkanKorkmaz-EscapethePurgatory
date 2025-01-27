@@ -1,0 +1,49 @@
+using System;
+
+namespace GameProgrammingFinalProject
+{
+    internal class Commands
+    {
+        public Location location = new Location();
+
+        Explore explore = new Explore();
+
+        public Inventory inventory;
+      
+        public void CommandInput(string currentCommand)
+        {
+
+            if (currentCommand == "commands")
+            {
+                //Write commands
+                Console.WriteLine("commands,inventory, explore, lookat, up, down, right, left");
+            }
+            else if (currentCommand == "explore")
+            {
+                //Go to the explore Class
+                explore.ExploreAround(location.CurrentXLocation(), location.CurrentYLocation());
+            }
+            else if (currentCommand == "lookat" || currentCommand == "look at")
+            {
+                //Go to the lookat Class
+                Console.WriteLine("Your current location is " + location.CurrentXLocation() + ", " + location.CurrentYLocation());
+            }
+            else if (currentCommand == "up" || currentCommand == "down" || currentCommand == "right" || currentCommand == "left")
+            {
+                location.Move(currentCommand);
+            }
+            else if (currentCommand == "inventory")
+            {
+                //OpenInventory
+                inventory.CheckInventory();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("That command is not valid in purgatory!");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+    }
+}
